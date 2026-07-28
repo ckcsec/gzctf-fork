@@ -1,0 +1,338 @@
+/*
+ * Base styles for the application
+ */
+
+body {
+  --cyber-bg: #eef4fa;
+  --cyber-bg-deep: #dfeaf5;
+  --cyber-bg-render:
+    linear-gradient(135deg, rgba(6, 32, 64, 0.12) 0%, transparent 25%),
+    linear-gradient(315deg, rgba(196, 45, 70, 0.1) 0%, transparent 23%),
+    linear-gradient(180deg, #f7fbff 0%, #eaf2f9 46%, #f4f7fb 100%);
+  --cyber-surface: #ffffff;
+  --cyber-surface-raised: #fbfdff;
+  --cyber-surface-soft: #edf5fb;
+  --cyber-line: rgba(26, 67, 115, 0.24);
+  --cyber-line-soft: rgba(26, 67, 115, 0.14);
+  --cyber-text: #13263a;
+  --cyber-text-soft: #3a4f66;
+  /* 次要文字：需在 #fff / #eef4fa / #edf5fb 上均达到 WCAG AA 4.5:1
+     旧值 #657a90 实测仅 4.43:1，是全站 c="dimmed" 文字发灰看不清的根因 */
+  --cyber-muted: #596d80;
+  --cyber-accent: #1767b3;
+  --cyber-accent-strong: #1f7ed0;
+  --cyber-red: #d64257;
+  --cyber-red-strong: #b42d46;
+  --cyber-mint: #1f9d73;
+  --cyber-warning: #bc7a16;
+  --cyber-navy: #071a33;
+  --cyber-navy-2: #0b2a4d;
+  --cyber-navy-3: #123f70;
+  --cyber-panel-dark: rgba(8, 28, 54, 0.92);
+  --cyber-panel-tint: #f1f6fb;
+  --cyber-panel-warm: #fff4f6;
+
+  padding: 0;
+  margin: 0;
+  background: var(--cyber-bg-render);
+  background-attachment: fixed;
+  color: var(--cyber-text);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  @media print {
+    background-color: #fff;
+    background-image: none;
+  }
+}
+
+:root[data-mantine-color-scheme='light'] {
+  --mantine-color-body: var(--cyber-bg);
+  --mantine-color-text: var(--cyber-text);
+  --mantine-color-dimmed: var(--cyber-muted);
+  --mantine-color-default: #ffffff;
+  --mantine-color-default-hover: #f2f7fc;
+  --mantine-color-default-color: var(--cyber-text-soft);
+  --mantine-color-default-border: rgba(43, 91, 145, 0.18);
+}
+
+::selection {
+  color: #ffffff;
+  background: rgba(23, 103, 179, 0.45);
+}
+
+a {
+  color: var(--cyber-accent);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.mantine-Title-root {
+  font-family:
+    'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  font-weight: 750;
+  letter-spacing: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  letter-spacing: 0;
+}
+
+:root[data-mantine-color-scheme] .mantine-Paper-root,
+:root[data-mantine-color-scheme] .mantine-Card-root {
+  border: 1px solid rgba(26, 67, 115, 0.17);
+  border-radius: 10px;
+  background:
+    linear-gradient(135deg, rgba(23, 103, 179, 0.06), transparent 30%),
+    linear-gradient(315deg, rgba(214, 66, 87, 0.05), transparent 32%),
+    linear-gradient(180deg, #f7fbff 0%, #e7f0f8 100%) !important;
+  box-shadow: 0 14px 30px rgba(13, 34, 58, 0.12);
+}
+
+:root[data-mantine-color-scheme] .mantine-Card-section {
+  border-color: var(--cyber-line-soft);
+}
+
+:root[data-mantine-color-scheme] .mantine-Paper-root:hover,
+:root[data-mantine-color-scheme] .mantine-Card-root:hover {
+  border-color: rgba(23, 103, 179, 0.36);
+}
+
+:root[data-mantine-color-scheme] .mantine-Input-input,
+:root[data-mantine-color-scheme] .mantine-PillsInput-input {
+  border-color: rgba(43, 91, 145, 0.22);
+  border-radius: 8px;
+  color: var(--cyber-text);
+  background: #fbfdff !important;
+}
+
+:root[data-mantine-color-scheme] .mantine-Input-input:focus,
+:root[data-mantine-color-scheme] .mantine-PillsInput-input:focus-within {
+  border-color: rgba(23, 103, 179, 0.72);
+  box-shadow: 0 0 0 3px rgba(23, 103, 179, 0.12);
+}
+
+:root[data-mantine-color-scheme] .mantine-Input-input::placeholder {
+  /* 旧值 #8a9bad 仅 2.8:1，输入框提示文字几乎看不见 */
+  color: #5f7386;
+}
+
+:root[data-mantine-color-scheme] .mantine-Input-label,
+:root[data-mantine-color-scheme] .mantine-InputWrapper-label {
+  color: var(--cyber-text-soft);
+  font-weight: 650;
+}
+
+:root[data-mantine-color-scheme] .mantine-Input-description,
+:root[data-mantine-color-scheme] .mantine-InputWrapper-description {
+  color: var(--cyber-muted);
+}
+
+:root[data-mantine-color-scheme] .mantine-Button-root {
+  border-radius: 8px;
+  border-color: rgba(23, 103, 179, 0.2);
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--cyber-accent), var(--cyber-navy-3));
+  box-shadow: 0 10px 20px rgba(12, 58, 108, 0.2);
+  font-weight: 700;
+}
+
+:root[data-mantine-color-scheme] .mantine-Button-root:hover {
+  border-color: rgba(214, 66, 87, 0.38);
+  background: linear-gradient(135deg, var(--cyber-accent-strong), var(--cyber-red-strong));
+  box-shadow: 0 12px 24px rgba(42, 63, 92, 0.2);
+}
+
+:root[data-mantine-color-scheme] .mantine-Button-root[data-variant='outline'],
+:root[data-mantine-color-scheme] .mantine-Button-root[data-variant='subtle'],
+:root[data-mantine-color-scheme] .mantine-Button-root[data-variant='transparent'] {
+  color: var(--cyber-accent);
+  background: #f8fbfe;
+}
+
+:root[data-mantine-color-scheme] .mantine-ActionIcon-root {
+  border-radius: 8px;
+  color: var(--cyber-text-soft);
+}
+
+:root[data-mantine-color-scheme] .mantine-Badge-root {
+  border-radius: 999px;
+  border-color: rgba(23, 103, 179, 0.28);
+  color: #0f578f;
+  background: linear-gradient(180deg, #f2f8ff, #dfeeff);
+  font-family: 'JetBrains Mono', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', monospace;
+  font-weight: 700;
+}
+
+:root[data-mantine-color-scheme] .mantine-Tabs-list {
+  border-color: var(--cyber-line);
+}
+
+:root[data-mantine-color-scheme] .mantine-Tabs-tab {
+  border-radius: 8px 8px 0 0;
+  border-color: transparent;
+  color: #52677d;
+}
+
+:root[data-mantine-color-scheme] .mantine-Tabs-tab:hover {
+  color: var(--cyber-accent);
+  background: #f2f7fc;
+}
+
+:root[data-mantine-color-scheme] .mantine-Tabs-tab[data-active] {
+  border-color: rgba(23, 103, 179, 0.24);
+  color: #0e4f8f;
+  background: #ffffff;
+}
+
+:root[data-mantine-color-scheme] .mantine-Table-table {
+  --table-border-color: rgba(43, 91, 145, 0.12);
+  color: var(--cyber-text-soft);
+  background:
+    linear-gradient(135deg, rgba(23, 103, 179, 0.035), transparent 28%),
+    linear-gradient(315deg, rgba(214, 66, 87, 0.03), transparent 30%),
+    #edf5fb;
+}
+
+:root[data-mantine-color-scheme] .mantine-Table-th {
+  color: #1d344d;
+  background: linear-gradient(90deg, #dfeef9, #f7e9ed);
+}
+
+:root[data-mantine-color-scheme] .mantine-Table-td {
+  border-color: rgba(43, 91, 145, 0.1);
+}
+
+:root[data-mantine-color-scheme] .mantine-Table-tbody .mantine-Table-tr {
+  background: rgba(248, 252, 255, 0.78);
+}
+
+:root[data-mantine-color-scheme] .mantine-Table-tr:hover {
+  background: #e4f1fb;
+}
+
+:root[data-mantine-color-scheme] .mantine-Table-tbody .mantine-Table-tr:nth-child(even) {
+  background: rgba(231, 242, 249, 0.9);
+}
+
+:root[data-mantine-color-scheme] .mantine-Modal-content,
+:root[data-mantine-color-scheme] .mantine-Drawer-content,
+:root[data-mantine-color-scheme] .mantine-Popover-dropdown,
+:root[data-mantine-color-scheme] .mantine-Menu-dropdown {
+  border: 1px solid var(--cyber-line);
+  border-radius: 10px;
+  color: var(--cyber-text);
+  background: #ffffff;
+  box-shadow: 0 18px 44px rgba(19, 38, 58, 0.16);
+}
+
+:root[data-mantine-color-scheme] .mantine-Modal-header,
+:root[data-mantine-color-scheme] .mantine-Drawer-header {
+  border-bottom: 1px solid var(--cyber-line-soft);
+  background: linear-gradient(90deg, #edf5fb, #fff4f6);
+}
+
+:root[data-mantine-color-scheme] .mantine-Alert-root,
+:root[data-mantine-color-scheme] .mantine-Notification-root {
+  border: 1px solid rgba(43, 91, 145, 0.18);
+  border-radius: 10px;
+  background: #f8fbfe;
+}
+
+:root[data-mantine-color-scheme] .mantine-Accordion-item {
+  border-color: var(--cyber-line-soft);
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+:root[data-mantine-color-scheme] .mantine-Dropzone-root {
+  border-color: rgba(23, 103, 179, 0.22);
+  border-radius: 10px;
+  background: #eef6fb;
+}
+
+:root[data-mantine-color-scheme] .mantine-Pagination-control {
+  border-color: rgba(43, 91, 145, 0.18);
+  border-radius: 8px;
+  color: var(--cyber-text-soft);
+  background: #f3f8fd;
+}
+
+:root[data-mantine-color-scheme] .mantine-Pagination-control[data-active] {
+  color: #ffffff;
+  background: #1767b3;
+}
+
+:root[data-mantine-color-scheme] .mantine-Switch-track {
+  border-color: rgba(214, 66, 87, 0.34);
+  border-radius: 999px;
+  background: #ffe5e9;
+}
+
+:root[data-mantine-color-scheme] .mantine-Switch-track[data-checked] {
+  border-color: rgba(23, 103, 179, 0.56);
+  background: #d7ecff;
+}
+
+:root[data-mantine-color-scheme] .mantine-Switch-thumb {
+  border-color: rgba(255, 255, 255, 0.94);
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(19, 38, 58, 0.18);
+}
+
+:root[data-mantine-color-scheme] .mantine-Switch-label,
+:root[data-mantine-color-scheme] .mantine-Switch-trackLabel {
+  color: #1d344d;
+  font-weight: 700;
+}
+
+:root[data-mantine-color-scheme] .mantine-SegmentedControl-root {
+  border: 1px solid var(--cyber-line);
+  border-radius: 10px;
+  background: #f4f8fb;
+}
+
+:root[data-mantine-color-scheme] .mantine-SegmentedControl-indicator {
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba(19, 38, 58, 0.1);
+}
+
+:root[data-mantine-color-scheme] .mantine-Text-root[data-dimmed],
+:root[data-mantine-color-scheme] .mantine-Text-root.c_dimmed {
+  color: var(--cyber-muted);
+}
+
+:root[data-mantine-color-scheme] .mantine-Menu-item:hover,
+:root[data-mantine-color-scheme] .mantine-Select-option:hover,
+:root[data-mantine-color-scheme] .mantine-Combobox-option:hover,
+:root[data-mantine-color-scheme] .mantine-Combobox-option[data-combobox-selected] {
+  background: #f0f6fc;
+}
+
+::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(96, 124, 153, 0.42);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}

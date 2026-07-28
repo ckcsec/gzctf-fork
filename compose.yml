@@ -1,0 +1,60 @@
+services:
+  gzctf:
+    image: gzctf-local:dev
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    restart: unless-stopped
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    environment:
+      - "GZCTF_ADMIN_PASSWORD=${GZCTF_ADMIN_PASSWORD}"
+      - "GZCTF_XorKey=${GZCTF_XOR_KEY}"
+      - "GZCTF_ConnectionStrings__Database=Host=db:5432;Database=gzctf;Username=postgres;Password=${POSTGRES_PASSWORD}"
+      - "GZCTF_ConnectionStrings__RedisCache=cache:6379,abortConnect=false"
+      - "GZCTF_ContainerProvider__PublicEntry=${GZCTF_PUBLIC_ENTRY:-127.0.0.1}"
+      - "GZCTF_ContainerProvider__PortMappingType=${GZCTF_PORT_MAPPING_TYPE:-Default}"
+      - "LC_ALL=zh_CN.UTF-8"
+    ports:
+      - "${GZCTF_WEB_PORT:-80}:8080"
+    volumes:
+      - "./data/files:/app/files"
+      - "./appsettings.json:/app/appsettings.json:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+
+  db:
+    image: postgres:alpine
+    restart: unless-stopped
+    environment:
+      - "POSTGRES_DB=gzctf"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+    volumes:
+      - "./data/db:/var/lib/postgresql"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d gzctf"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  cache:
+    image: redis:alpine
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.12.0/24

@@ -1,0 +1,13 @@
+.git
+.env
+appsettings.json
+data
+.DS_Store
+**/.DS_Store
+._*
+**/._*
+**/bin
+**/obj
+**/node_modules
+**/build
+**/log

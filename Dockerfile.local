@@ -1,0 +1,30 @@
+FROM mcr.microsoft.com/dotnet/sdk:10.0-alpine AS build
+
+WORKDIR /source
+RUN apk add --update --no-cache nodejs npm
+
+COPY src/Directory.Packages.props ./Directory.Packages.props
+COPY src/GZCTF/GZCTF.csproj GZCTF/GZCTF.csproj
+RUN dotnet restore GZCTF/GZCTF.csproj
+
+COPY src/GZCTF GZCTF
+RUN dotnet publish GZCTF/GZCTF.csproj --configuration Release --output /publish --no-restore
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine AS final
+
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
+    LC_ALL=en_US.UTF-8
+
+WORKDIR /app
+RUN apk add --update --no-cache wget libpcap icu-data-full icu-libs \
+    ca-certificates libgdiplus tzdata krb5-libs && \
+    update-ca-certificates
+
+COPY --from=build /publish .
+
+EXPOSE 8080
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
+
+ENTRYPOINT ["dotnet", "GZCTF.dll"]

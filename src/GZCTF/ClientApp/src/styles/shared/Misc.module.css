@@ -1,0 +1,295 @@
+.noScrollBars {
+  /* Hide scrollbar (type = "never" for ScrollArea) */
+  --scrollarea-scrollbar-size: 0;
+}
+
+.noPointerEvents {
+  pointer-events: none;
+}
+
+.noUserSelect {
+  user-select: none;
+}
+
+.noBorder {
+  border: none;
+}
+
+.m0 {
+  margin: 0;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.w10rem {
+  width: 10rem;
+}
+
+.cCopy {
+  cursor: copy;
+}
+
+.cPointer {
+  cursor: pointer;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+.overflowVisible {
+  overflow: visible;
+}
+
+.flex {
+  display: flex;
+}
+
+.flexNoWrap {
+  flex-wrap: nowrap;
+}
+
+.flexGrow {
+  flex-grow: 1;
+}
+
+.flexRow {
+  flex-direction: row;
+}
+
+.alignCenter {
+  align-items: center;
+}
+
+.alignEnd {
+  align-items: flex-end;
+}
+
+.alignSelfEnd {
+  align-self: end;
+}
+
+.justifyEnd {
+  justify-content: flex-end;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+.justifyBetween {
+  justify-content: space-between;
+}
+
+.ffmono {
+  font-family: var(--mantine-font-family-monospace);
+}
+
+.fwBold {
+  font-weight: bold;
+}
+
+.fw700 {
+  font-weight: 700;
+}
+
+.wordBreakAll {
+  word-break: break-all;
+}
+
+.wsPreWrap {
+  white-space: pre-wrap;
+}
+
+/* components specific */
+
+.accountForm {
+  max-width: 340px;
+  min-width: 280px;
+  width: min(340px, calc(100vw - 3rem));
+}
+
+.accountShell {
+  position: relative;
+  min-height: 100vh;
+  background:
+    linear-gradient(90deg, rgba(2, 8, 18, 0.86), rgba(5, 15, 35, 0.54) 55%, rgba(5, 15, 35, 0.2)),
+    linear-gradient(180deg, rgba(7, 20, 42, 0.18), rgba(5, 13, 28, 0.86)),
+    url('/brand/ctf-hero-red-blue.png') center center / cover no-repeat;
+  background-size:
+    auto,
+    auto,
+    cover;
+}
+
+.accountShell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 36, 61, 0.12), transparent 34%),
+    linear-gradient(270deg, rgba(36, 130, 255, 0.16), transparent 36%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 18px);
+}
+
+.accountPanel {
+  position: relative;
+  width: min(420px, calc(100vw - 2rem));
+  padding: 2rem 2.25rem 2.25rem;
+  border: 1px solid rgba(132, 190, 255, 0.24);
+  border-radius: 0;
+  background:
+    linear-gradient(135deg, rgba(214, 66, 87, 0.06), transparent 36%),
+    linear-gradient(315deg, rgba(23, 103, 179, 0.07), transparent 38%),
+    rgba(252, 253, 255, 0.96);
+  box-shadow: 0 26px 60px rgba(2, 12, 26, 0.28);
+  backdrop-filter: blur(12px);
+  --platform-logo-color: #d64257;
+  --platform-title-color: #10243a;
+  --platform-title-shadow: none;
+}
+
+.accountPanel::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 45%;
+  height: 3px;
+  background: #ff263f;
+  box-shadow: 0 0 18px rgba(255, 38, 63, 0.42);
+}
+
+.accountPanel::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 45%;
+  height: 3px;
+  background: #2482ff;
+  box-shadow: 0 0 18px rgba(36, 130, 255, 0.42);
+}
+
+.accountPanel :global(.mantine-Input-label),
+.accountPanel :global(.mantine-InputWrapper-label) {
+  color: var(--cyber-text);
+}
+
+.accountPanel :global(.mantine-Input-description),
+.accountPanel :global(.mantine-InputWrapper-description),
+.accountPanel :global(.mantine-Text-root) {
+  color: var(--cyber-muted);
+}
+
+/* 链接单独给强调色，用 muted 会和正文糊在一起且对比度不足 */
+.accountPanel :global(.mantine-Anchor-root) {
+  color: var(--cyber-accent);
+  font-weight: 600;
+}
+
+.accountPanel :global(.mantine-Anchor-root):hover {
+  color: var(--cyber-red-strong);
+}
+
+.accountPanel :global(.mantine-Input-input) {
+  border-color: rgba(43, 91, 145, 0.22);
+  color: var(--cyber-text);
+  background: #fbfdff !important;
+}
+
+.listItemWrapper {
+  max-width: calc(100% - 2rem);
+}
+
+.teamNameWrapper {
+  max-width: calc(100% - 3rem);
+  flex-grow: 1;
+}
+
+.switchVerticalMiddle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gameDivEdit {
+  min-height: 79px;
+  max-height: 79px;
+  overflow: auto;
+}
+
+.gamePoster {
+  height: 233px;
+  padding: 0 16px;
+}
+
+.gamePoster[data-poster] {
+  padding: 0;
+}
+
+.alignNormal {
+  align-items: normal;
+}
+
+.challEditLabel {
+  color: #263d54;
+  background: light-dark(#eef4f9, var(--mantine-color-dark-4));
+}
+
+.dropdown {
+  margin-left: 2rem;
+  width: 10rem;
+}
+
+.dropdown[data-mobile] {
+  width: 50vw;
+}
+
+.fixedButton {
+  position: fixed;
+  bottom: var(--fixed-bottom, 2rem);
+  right: var(--fixed-right, 2rem);
+  box-shadow: var(--mantine-shadow-lg);
+  z-index: 1000;
+
+  @media print {
+    display: none;
+  }
+}
+
+.hoverCard {
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    filter 0.2s,
+    transform 0.2s;
+
+  @mixin hover {
+    transform: translateY(-4px);
+
+    @mixin light {
+      filter: none !important;
+      box-shadow: 0 18px 38px rgba(31, 57, 87, 0.14);
+    }
+
+    @mixin dark {
+      filter: none !important;
+      box-shadow: 0 18px 38px rgba(31, 57, 87, 0.14);
+    }
+  }
+
+  &[data-no-move] {
+    @mixin hover {
+      transform: translateY(0);
+    }
+  }
+}

@@ -1,0 +1,168 @@
+.overlay {
+  background: rgba(7, 20, 42, 0.38);
+}
+
+.title {
+  margin: 0;
+  width: 100%;
+}
+
+.header {
+  position: relative;
+  padding: 1rem 1.2rem 0.85rem;
+  border-bottom: 1px solid rgba(132, 190, 255, 0.18) !important;
+  color: #ffffff !important;
+  background:
+    linear-gradient(90deg, rgba(255, 38, 63, 0.2), transparent 38%),
+    linear-gradient(270deg, rgba(36, 130, 255, 0.2), transparent 34%),
+    #071a33 !important;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42%;
+  height: 3px;
+  background: #ff263f;
+  box-shadow: 0 0 18px rgba(255, 38, 63, 0.38);
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  width: 42%;
+  height: 3px;
+  background: #2482ff;
+  box-shadow: 0 0 18px rgba(36, 130, 255, 0.38);
+}
+
+.body {
+  padding: 1.15rem 1.2rem 0;
+  color: #263d54;
+  background:
+    linear-gradient(135deg, rgba(36, 130, 255, 0.045), transparent 32%),
+    linear-gradient(315deg, rgba(255, 38, 63, 0.045), transparent 34%),
+    #f8fbff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: calc(50vh + 300px);
+  overflow: hidden;
+  border: 1px solid rgba(132, 190, 255, 0.24);
+  border-radius: 14px;
+  color: #263d54;
+  background:
+    linear-gradient(135deg, rgba(36, 130, 255, 0.045), transparent 32%),
+    linear-gradient(315deg, rgba(255, 38, 63, 0.045), transparent 34%),
+    #f8fbff;
+  box-shadow:
+    0 28px 80px rgba(18, 42, 78, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.86);
+}
+
+.header :global(.mantine-Title-root) {
+  color: #ffffff !important;
+}
+
+.content :global(.mantine-Text-root),
+.content :global(.mantine-Input-label),
+.content :global(.mantine-InputWrapper-label) {
+  color: #263d54;
+}
+
+.content :global(.mantine-Input-description),
+.content :global(.mantine-Anchor-root) {
+  color: #1767b3;
+}
+
+.header :global(.mantine-Text-root) {
+  color: #ffffff !important;
+}
+
+.body :global(.mantine-Title-root) {
+  color: #10243a;
+}
+
+.content :global(.mantine-Divider-root) {
+  border-color: rgba(132, 190, 255, 0.18);
+}
+
+.body :global(.markdown-body),
+.body :global(.markdown-body *) {
+  color: #263d54;
+}
+
+.body :global(.markdown-body a) {
+  color: #1767b3;
+}
+
+.body :global(code),
+.body :global(pre) {
+  border: 1px solid rgba(132, 190, 255, 0.18);
+  color: #10243a;
+  background: #edf5fb;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 400;
+  padding: var(--mantine-spacing-md);
+  padding-top: var(--mantine-spacing-xs);
+  border-top: 1px solid rgba(132, 190, 255, 0.18);
+  background:
+    linear-gradient(90deg, rgba(255, 38, 63, 0.045), transparent 40%),
+    linear-gradient(270deg, rgba(36, 130, 255, 0.06), transparent 36%),
+    #edf5fb;
+}
+
+.footer :global(.mantine-TextInput-input) {
+  border-color: rgba(35, 88, 150, 0.22);
+  color: #10243a;
+  background: #ffffff !important;
+}
+
+.footer :global(.mantine-TextInput-input:focus) {
+  border-color: rgba(36, 130, 255, 0.72);
+  box-shadow: 0 0 0 3px rgba(36, 130, 255, 0.14);
+}
+
+.footer :global(.mantine-Button-root) {
+  border-radius: 0;
+  background: linear-gradient(135deg, #ff263f, #1767d7);
+}
+
+.footer :global(.mantine-Button-root[data-variant='light']) {
+  border: 1px solid rgba(132, 190, 255, 0.24);
+  color: #0f578f;
+  background: #ffffff;
+}
+
+.footer :global(.mantine-ActionIcon-root) {
+  border: 1px solid rgba(132, 190, 255, 0.22);
+  color: #0f578f;
+  background: #ffffff;
+}
+
+@media (max-width: 760px) {
+  .content {
+    max-height: calc(100vh - 2rem);
+  }
+
+  .header,
+  .body,
+  .footer {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+}
