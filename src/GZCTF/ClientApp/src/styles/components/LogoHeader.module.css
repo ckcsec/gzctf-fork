@@ -1,0 +1,18 @@
+.brand {
+  display: inline-block;
+  color: var(--platform-logo-color, #d64257);
+}
+
+.title {
+  color: var(--platform-title-color, #182b3f);
+  font-family:
+    'Exo 2', 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  font-size: 1.72rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-shadow: var(--platform-title-shadow, none);
+}
+
+.title[data-mobile] {
+  font-size: 1.08rem;
+}

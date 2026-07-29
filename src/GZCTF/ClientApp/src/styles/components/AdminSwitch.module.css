@@ -1,0 +1,47 @@
+.track {
+  width: 4.7rem;
+  min-width: 4.7rem;
+  height: 1.7rem;
+  border: 1px solid rgba(214, 66, 87, 0.26);
+  border-radius: 999px;
+  color: #9d2d3c;
+  background: #fff1f3;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+}
+
+.track[data-checked] {
+  border-color: rgba(23, 103, 179, 0.34);
+  color: #0e5799;
+  background: #e6f2ff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.74);
+}
+
+.hiddenTrack {
+  border-color: rgba(23, 103, 179, 0.34) !important;
+  color: #0e5799;
+  background: #e6f2ff !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.74);
+}
+
+.hiddenTrack[data-checked] {
+  border-color: rgba(214, 66, 87, 0.3) !important;
+  color: #9d2d3c;
+  background: #fff1f3 !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.74);
+}
+
+.thumb {
+  border: 1px solid rgba(43, 91, 145, 0.14);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(31, 57, 87, 0.16);
+}
+
+.label {
+  padding: 0 0.18rem;
+  font-family:
+    'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}

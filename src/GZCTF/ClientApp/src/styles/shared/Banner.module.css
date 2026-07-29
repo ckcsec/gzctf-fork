@@ -1,0 +1,120 @@
+.root {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+  padding: calc(var(--mantine-spacing-xl) * 3.3) 0;
+
+  border-bottom: 1px solid rgba(132, 190, 255, 0.2);
+  background:
+    linear-gradient(90deg, rgba(4, 13, 30, 0.94) 0%, rgba(5, 16, 36, 0.78) 48%, rgba(5, 16, 36, 0.18) 100%),
+    linear-gradient(180deg, rgba(7, 20, 42, 0.1), rgba(5, 13, 28, 0.82)),
+    url('/brand/ctf-hero-red-blue.png') center center / cover no-repeat;
+  box-shadow: 0 18px 42px rgba(4, 20, 40, 0.28);
+
+  @mixin smaller-than $mantine-breakpoint-sm {
+    justify-content: start;
+  }
+
+  @mixin smaller-than $mantine-breakpoint-md {
+    padding: calc(var(--mantine-spacing-xl) * 1.5) 1rem;
+  }
+}
+
+.root::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 36, 61, 0.16), transparent 34%),
+    linear-gradient(270deg, rgba(36, 130, 255, 0.18), transparent 34%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 22px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 42%);
+}
+
+.root::after {
+  content: '';
+  position: absolute;
+  left: clamp(1rem, 6vw, 6rem);
+  right: clamp(1rem, 6vw, 6rem);
+  bottom: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff263f, transparent 38%, #2482ff);
+  box-shadow: 0 0 24px rgba(36, 130, 255, 0.45);
+}
+
+.container {
+  position: relative;
+  max-width: 1180px;
+  width: 100%;
+  z-index: 1;
+
+  @mixin smaller-than $mantine-breakpoint-md {
+    padding: var(--mantine-spacing-md) calc(var(--mantine-spacing-md) * 2);
+  }
+}
+
+.flex-grow-at-sm {
+  flex-grow: 0;
+
+  @mixin smaller-than $mantine-breakpoint-sm {
+    flex-grow: 1;
+  }
+}
+
+.description {
+  color: #d7e6f6;
+  max-width: 600px;
+}
+
+.title {
+  font-size: calc(var(--mantine-font-size-xl) * 2.2);
+  font-weight: 900;
+  line-height: 1.1;
+
+  color: #f4f8ff;
+  text-shadow:
+    0 2px 0 rgba(255, 40, 63, 0.64),
+    0 12px 30px rgba(0, 0, 0, 0.42);
+
+  @mixin smaller-than $mantine-breakpoint-md {
+    max-width: 100%;
+    font-size: calc(var(--mantine-font-size-xl) * 1.8);
+    line-height: 1.15;
+  }
+}
+
+.content {
+  padding-top: 1.25rem;
+}
+
+.banner {
+  max-width: 50%;
+  height: 100%;
+  width: 40vw;
+  overflow: hidden;
+  border: 1px solid rgba(132, 190, 255, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.34);
+
+  @mixin smaller-than $mantine-breakpoint-sm {
+    display: none;
+  }
+}
+
+.date {
+  color: #d7e6f6;
+}
+
+.root :global(.mantine-Badge-root) {
+  border-color: rgba(132, 190, 255, 0.42);
+  color: #eaf4ff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.root :global(.mantine-Text-root) {
+  color: #d7e6f6;
+}

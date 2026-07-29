@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "gzctf-web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev", "--host"],
+      "port": 63000
+    }
+  ]
+}

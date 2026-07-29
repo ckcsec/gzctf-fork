@@ -1,0 +1,382 @@
+.page {
+  width: 100%;
+  min-height: calc(100vh - 68px);
+  padding: clamp(0.6rem, 1.6vw, 1.2rem) clamp(0.6rem, 2vw, 1.6rem) 1.4rem;
+  color: #10243a;
+  background:
+    radial-gradient(120% 60% at 12% -8%, rgba(255, 38, 63, 0.06), transparent 60%),
+    radial-gradient(120% 60% at 92% -6%, rgba(22, 124, 255, 0.08), transparent 60%),
+    linear-gradient(180deg, #f4f8fd 0%, #eaf1f9 100%);
+}
+
+/* ── 整体：左导航 + 右列表 ─────────────────────── */
+.workspace {
+  display: grid;
+  width: 100%;
+  align-items: start;
+  grid-template-columns: minmax(14rem, 17rem) minmax(0, 1fr);
+  gap: clamp(0.7rem, 1.4vw, 1.1rem);
+}
+
+/* ── 左侧栏 ─────────────────────────────────── */
+.sidebar {
+  position: sticky;
+  top: 0.6rem;
+  display: flex;
+  min-height: 22rem;
+  max-height: calc(100vh - 6rem);
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* 战队信息卡 */
+.teamCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.9rem;
+  overflow: hidden;
+  border-radius: 14px;
+  color: #eaf2ff;
+  background:
+    linear-gradient(115deg, rgba(255, 38, 63, 0.16), transparent 36%),
+    linear-gradient(255deg, rgba(22, 124, 255, 0.2), transparent 40%),
+    linear-gradient(120deg, #0a1730 0%, #0d1f3f 55%, #0a1830 100%);
+  box-shadow:
+    0 14px 30px rgba(9, 20, 42, 0.24),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.avatar {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.teamMeta {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.teamName {
+  color: #ffffff;
+  font-size: 0.98rem;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+}
+
+.token {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.1rem 0.42rem;
+  border: 1px solid rgba(132, 190, 255, 0.28);
+  border-radius: 999px;
+  color: #9fc7ff;
+  background: rgba(10, 30, 60, 0.55);
+  cursor: pointer;
+  font-family: var(--mantine-font-family-monospace);
+  font-size: 0.66rem;
+  font-weight: 600;
+}
+
+.token:hover {
+  border-color: rgba(132, 190, 255, 0.6);
+  color: #d7e9ff;
+}
+
+.token span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 三项统计 */
+.statRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.42rem 0.2rem;
+  border: 1px solid rgba(132, 190, 255, 0.16);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.statValue {
+  color: #ffffff;
+  font-family: var(--mantine-font-family-monospace);
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.stat[data-accent='red'] .statValue {
+  color: #ff8494;
+}
+
+.stat[data-accent='blue'] .statValue {
+  color: #6fb8ff;
+}
+
+.statLabel {
+  color: #a9c2dd;
+  font-size: 0.63rem;
+  font-weight: 600;
+}
+
+/* 总进度条 */
+.progressBox {
+  margin-top: 0.1rem;
+}
+
+.progressLabel {
+  color: #a9c2dd;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.progressPct {
+  color: #ffffff;
+  font-family: var(--mantine-font-family-monospace);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.progressRoot {
+  height: 0.42rem;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.progressSection {
+  background: linear-gradient(90deg, #2482ff, #ff5f72);
+}
+
+/* ── 分类导航 ───────────────────────────────── */
+.catScroll {
+  min-height: 0;
+  flex: 1;
+  padding: 0.45rem;
+  border: 1px solid rgba(26, 67, 115, 0.14);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(13, 34, 58, 0.07);
+}
+
+.catNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.catItem {
+  position: relative;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1.1rem minmax(0, 1fr) auto;
+  gap: 0.45rem;
+  padding: 0.5rem 0.6rem 0.62rem;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  color: var(--cyber-text-soft);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  --cat-color: var(--cyber-accent);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.catItem:hover {
+  color: #10243a;
+  background: #f0f6fc;
+}
+
+.catItem[data-active] {
+  border-color: rgba(26, 67, 115, 0.16);
+  color: #0e2c4e;
+  background: linear-gradient(90deg, rgba(23, 103, 179, 0.12), rgba(23, 103, 179, 0.03));
+  font-weight: 700;
+}
+
+.catItem[data-active] svg {
+  color: var(--cat-color);
+}
+
+.catName {
+  overflow: hidden;
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.catCount {
+  color: var(--cyber-muted);
+  font-family: var(--mantine-font-family-monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.catItem[data-done] .catCount {
+  color: #1f9d73;
+}
+
+/* 分类完成进度：贴在按钮底部的细条 */
+.catBar {
+  position: absolute;
+  bottom: 0.3rem;
+  left: 0.6rem;
+  width: calc(100% - 1.2rem);
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(26, 67, 115, 0.1);
+}
+
+.catBar::after {
+  content: '';
+  display: block;
+  width: var(--cat-progress, 0%);
+  height: 100%;
+  border-radius: 999px;
+  background: var(--cat-color);
+  transition: width 0.25s ease;
+}
+
+.catItem[data-done] .catBar::after {
+  background: #1f9d73;
+}
+
+/* ── 右侧主区 ───────────────────────────────── */
+.main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(26, 67, 115, 0.14);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(13, 34, 58, 0.06);
+  flex-wrap: wrap;
+}
+
+.search {
+  min-width: 12rem;
+  max-width: 20rem;
+  flex: 1;
+}
+
+/* ── 题目列表 ───────────────────────────────── */
+.listPanel {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(26, 67, 115, 0.14);
+  border-radius: 12px;
+  background: #f7fbff;
+  box-shadow: 0 10px 24px rgba(13, 34, 58, 0.07);
+}
+
+/* 列标题：列宽需与 ChallengeRow .row 一致。
+   表头在滚动容器外、行在容器内，左右内缩必须手动对齐：
+   左 = .list 内边距 + 行左边框(3px) + 行内边距；右 = .list 内边距 + 行内边距。
+   .list 不能用 offsetScrollbars，否则右侧会多出滚动条宽度导致错位。 */
+.listHead {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2.6rem minmax(0, 1fr) 8.5rem 5.5rem 4.5rem;
+  gap: 0.6rem;
+  padding: 0.5rem calc(0.5rem + 0.9rem) 0.5rem calc(0.5rem + 0.9rem + 3px);
+  border-bottom: 1px solid rgba(26, 67, 115, 0.12);
+  color: var(--cyber-muted);
+  background: linear-gradient(90deg, #eaf2f9, #f4f7fb);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.listHead span:nth-child(1) {
+  text-align: center;
+}
+
+.listHead span:nth-child(4),
+.listHead span:nth-child(5) {
+  text-align: right;
+}
+
+.list {
+  max-height: calc(100vh - 15rem);
+  padding: 0.5rem;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+}
+
+/* ── 空态 / 提示 ─────────────────────────────── */
+.stateBox {
+  min-height: 16rem;
+  padding: 2rem 1rem;
+}
+
+.stateTitle {
+  color: #10243a;
+  font-size: 1.05rem;
+  font-weight: 750;
+}
+
+.stateText {
+  color: var(--cyber-muted);
+  font-size: 0.86rem;
+}
+
+/* ── 响应式：窄屏改为上下堆叠 ─────────────────── */
+@media (max-width: 62em) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sidebar {
+    position: static;
+    max-height: none;
+  }
+
+  .catScroll {
+    max-height: 14rem;
+  }
+
+  .listHead {
+    grid-template-columns: 2.2rem minmax(0, 1fr) 4.6rem;
+    padding-right: calc(0.5rem + 0.7rem);
+    padding-left: calc(0.5rem + 0.7rem + 3px);
+  }
+
+  .listHead span:nth-child(3),
+  .listHead span:nth-child(5) {
+    display: none;
+  }
+
+  .list {
+    max-height: none;
+  }
+}

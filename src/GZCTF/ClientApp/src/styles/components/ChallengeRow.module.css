@@ -1,0 +1,158 @@
+/* 答题页题目列表行 —— 列宽需与 ChallengePanel .listHead 保持一致 */
+.row {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  grid-template-columns: 2.6rem minmax(0, 1fr) 8.5rem 5.5rem 4.5rem;
+  gap: 0.6rem;
+  padding: 0.62rem 0.9rem;
+  border: 1px solid rgba(26, 67, 115, 0.13);
+  border-left: 3px solid var(--row-color);
+  border-radius: 8px;
+  color: #16283d;
+  background: #ffffff;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.row:hover {
+  border-color: rgba(26, 67, 115, 0.3);
+  border-left-color: var(--row-color);
+  background: var(--row-color-soft);
+  box-shadow: 0 6px 18px rgba(13, 34, 58, 0.1);
+  transform: translateX(2px);
+}
+
+.row:focus-visible {
+  outline: 2px solid var(--row-color);
+  outline-offset: 2px;
+}
+
+.row[data-solved] {
+  background: linear-gradient(90deg, rgba(31, 157, 115, 0.09), #ffffff 42%);
+}
+
+.row[data-expired] {
+  opacity: 0.62;
+}
+
+/* ── 状态列 ─────────────────────────────── */
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solvedMark {
+  display: flex;
+  color: #1f9d73;
+}
+
+.expiredMark {
+  display: flex;
+  color: #bc7a16;
+}
+
+.pendingMark {
+  width: 0.62rem;
+  height: 0.62rem;
+  border: 2px solid rgba(26, 67, 115, 0.28);
+  border-radius: 50%;
+}
+
+/* ── 题目名 + 一血 ──────────────────────── */
+.titleCell {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.title {
+  overflow: hidden;
+  color: #10243a;
+  font-size: 0.94rem;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bloods {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.blood {
+  display: flex;
+  align-items: center;
+  border-radius: 999px;
+}
+
+.blood[data-own] {
+  box-shadow: 0 0 0 2px var(--blood-color);
+}
+
+/* ── 分类 ───────────────────────────────── */
+.cate {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  overflow: hidden;
+  color: var(--row-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── 分值 ───────────────────────────────── */
+.score {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.18rem;
+  color: #0e4f8f;
+  font-family: var(--mantine-font-family-monospace);
+  font-size: 1.02rem;
+  font-weight: 800;
+}
+
+.score em {
+  color: var(--cyber-muted);
+  font-size: 0.66rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ── 解出数 ─────────────────────────────── */
+.solves {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  color: var(--cyber-text-soft);
+  font-family: var(--mantine-font-family-monospace);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+/* ── 窄屏：收起分类与解出列 ───────────────── */
+@media (max-width: 62em) {
+  .row {
+    grid-template-columns: 2.2rem minmax(0, 1fr) 4.6rem;
+    gap: 0.4rem;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .cate,
+  .solves {
+    display: none;
+  }
+}

@@ -1,0 +1,29 @@
+.main {
+  fill: #d64257;
+}
+
+.front {
+  fill: #1767b3;
+}
+
+.mid {
+  fill: #235f9f;
+}
+
+.back {
+  fill: #8b2638;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  transform-origin: 50% 50%;
+  animation: spin 8s linear infinite;
+}

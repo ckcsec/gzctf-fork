@@ -1,0 +1,102 @@
+.table {
+  table-layout: fixed;
+  width: auto;
+  min-width: 100%;
+  /* sticky 单元格需要 separate 才能保留边框 */
+  border-collapse: separate;
+  border-spacing: 0;
+
+  & thead tr th,
+  & tbody tr td {
+    text-align: center;
+    padding: 6px 4px;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+}
+
+/* 纵向滚动容器：表头吸顶，行区域滚动，可展示全部参赛队伍 */
+.scrollBox {
+  max-height: calc(100vh - 17rem);
+  min-height: 20rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* 表头三行整体吸顶 */
+.thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* 左侧 5 列横向冻结 */
+.left {
+  position: sticky;
+  z-index: 3;
+  background-color: var(--mantine-color-white);
+}
+
+/* 冻结列跟随斑马纹，避免横向滚动时露出底下内容 */
+.table tbody tr:nth-child(even) .left {
+  background-color: #eaf2f9;
+}
+
+/* 表头里的冻结列要同时压住纵向与横向两个方向 */
+.thead .left {
+  z-index: 12;
+}
+
+/* 冻结列右边缘的分隔阴影，滚动时才显现 */
+.freezeEdge {
+  box-shadow: 6px 0 8px -6px rgb(19 38 58 / 18%);
+}
+
+.header {
+  font-weight: bold;
+}
+
+.mono {
+  font-weight: bold;
+  font-family: var(--mantine-font-family-monospace);
+}
+
+.teamCell {
+  max-width: 0;
+  width: auto;
+  overflow: hidden;
+}
+
+.legend {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 12px;
+  padding-left: 0;
+  float: left;
+  z-index: 20;
+}
+
+.text {
+  font-size: 0.9em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  height: var(--mantine-line-height-sm);
+}
+
+.input {
+  user-select: none;
+  font-weight: 600;
+  line-height: var(--mantine-line-height-sm);
+  height: var(--mantine-line-height-sm);
+}
